@@ -1,0 +1,68 @@
+﻿@page
+@model RazorBasketballUdemy.Pages.Raptors.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+
+<form>
+    <p>
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Raptor[0].PlayerNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raptor[0].PlayerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raptor[0].PlayerPosition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raptor[0].PlayerHeight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Raptor[0].PlayerSalary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Raptor) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerPosition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerHeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlayerSalary)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
